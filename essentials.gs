@@ -10,13 +10,13 @@ function sheet_essentials(award_id) {
       SPREAD_ID : "1aHlHqGvgKitASGv_d9_2ApoPF00_GcqzIU39c7_sMHM",
       SHEET : "responseKJA25",
       email_template : "KJA_emel",
-      email_title : "KJA 2025 : Entry Received ({{xxyyzz}})"
+      email_title : "KJA 2026 : Entry Received ({{xxyyzz}})"
     },    
     KPKT : {
       SPREAD_ID : "1BWZgtI5fmn4KlRR-_aVq15BGGGUDklRgB1n0ljjA2g0",
-      SHEET : "responseKPKT25",
+      SHEET : "responseKPKT26",
       email_template : "KPKT_emel",
-      email_title : "AKeMedia KPKT 2025 : Penyertaan Diterima ({{xxyyzz}})",
+      email_title : "AKeMedia KPKT 2026 : Penyertaan Diterima ({{xxyyzz}})",
       UPDATED_SS_ID : null // 270325 will update later
     },
     AGRO : {
@@ -57,9 +57,9 @@ function sheet_essentials(award_id) {
     },
     CIDB : {
       SPREAD_ID : "1Y5WUZEvUdf7j2466yVB0J7Kxq-THxDZW80Z9H9hwPqc",
-      SHEET : "responseCIDB25",
+      SHEET : "responseCIDB26",
       email_template : "CIDB_emel",
-      email_title : "AMP CIDB 2025 : Entry Received ({{xxyyzz}})"
+      email_title : "AMP CIDB 2026 : Entry Received ({{xxyyzz}})"
     },
     PERKESO : {
       SPREAD_ID : "1_J790W2XDOiR4qpA0wmPZo4DISksC2pExtt97vhejRk",
@@ -87,6 +87,16 @@ function sheet_essentials(award_id) {
   if(!essentials[award_id].UPDATED_SHEET) essentials[award_id].UPDATED_SHEET = "merged" // for resend.gs
 
   return essentials[award_id] || essentials['default']
+}
+
+// 210426
+function get_award_spreadsheet_url(award_id = "CIDB") {
+  const obj = sheet_essentials(award_id)
+  const prefix = "https://docs.google.com/spreadsheets/d/"
+
+  const url = prefix + obj.SPREAD_ID
+
+  return Logger.log(url)
 }
 
 
